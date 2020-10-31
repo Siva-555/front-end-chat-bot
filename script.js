@@ -1,3 +1,4 @@
+// talk function is being called when user clicks send button 
 function talk(){
     var user=document.getElementById("inputbox").value.toLowerCase();
     user_msg_append(user)
@@ -26,6 +27,7 @@ function talk(){
     scrolldown();
 }
 
+//Appends all user messages into the chatlog
 function user_msg_append(user){
   
     var node = document.createElement("p");
@@ -37,6 +39,7 @@ function user_msg_append(user){
     scrolldown();
 }
 
+//Appends all bot messages into the chatlog
 function bot_msg_append(data){
     var node = document.createElement("p");
     node.classList.add("bot_msg")
@@ -47,24 +50,31 @@ function bot_msg_append(data){
     scrolldown();
 }
 
+//Tells a random joke using rapid api
 function joke(){
-  var xhr = new XMLHttpRequest();
-  xhr.withCredentials = true;
-  xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === this.DONE) {
-      var data=JSON.parse(this.responseText)
-      bot_msg_append(data.content)
-      
-    }
-   
-  });
-  xhr.open("GET", "https://joke3.p.rapidapi.com/v1/joke");
-  xhr.setRequestHeader("x-rapidapi-host", "joke3.p.rapidapi.com");
-  xhr.setRequestHeader("x-rapidapi-key", "6db373d25cmsh3b2c181abcde788p12167bjsn0800b6171148");
-  xhr.send();
-   scrolldown();
+  var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+ if (this.readyState === this.DONE) {
+  //console.log(this.responseText);
+    data=JSON.parse(this.responseText);
+    bot_msg_append(data.content)
+ }
+});
+
+xhr.open("GET", "https://joke3.p.rapidapi.com/v1/joke");
+xhr.setRequestHeader("x-rapidapi-host", "joke3.p.rapidapi.com");
+xhr.setRequestHeader("x-rapidapi-key", "6db373d25cmsh3b2c181abcde788p12167bjsn0800b6171148");
+
+xhr.send(data);
+
 }
 
+//Evaluates an expression
+//NOTE: user should give an expression as eval [space] expression otherwise it wont works
 function evall(user){
   var c = eval(user)
   if(c.toString().length!=0){
@@ -78,6 +88,7 @@ function evall(user){
   
 }
 
+//Page scrolls down automatically 
 function scrolldown() {
   document.getElementsByClassName("chatbox")[0].scrollBy(0, 250);
 }
