@@ -43,7 +43,7 @@ The main goal is to design a front end for a chatbot.This should be like a conve
 - Repel Links
     - [Link for code](https://repl.it/@siva555/week2frontend#script.js) 
     - [Link for bot](https://week2frontend.siva555.repl.co)
-- [YouTube Video link](https://youtu.be/1c2QZYy25vA)
+- [YouTube Video link](https://youtu.be/EtixKlJfvCc)
 
 ## Image of chatbot interface
 ![](https://github.com/Siva-555/front-end-chat-bot/blob/main/Images/chatbot_img.png)
